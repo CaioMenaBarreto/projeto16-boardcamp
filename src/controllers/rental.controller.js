@@ -126,7 +126,7 @@ export async function deleteRental(req, res) {
             return res.status(400).send("Aluguel não finalizado.");
         }
 
-        if(rental.rows.length === 0) {
+        if(!idExistente.rows[0]) {
             return res.status(404).send("Aluguel inexistente.");
         };
 
