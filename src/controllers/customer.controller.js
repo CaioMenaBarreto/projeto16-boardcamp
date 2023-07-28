@@ -46,10 +46,24 @@ export async function postCustomer(req, res) {
 
 export async function putCustomer(req, res) {
     const { id } = req.params;
+    const { name, phone, cpf, birthday } = req.body;
     try {
-        res.send("Deu bom");
+        const clienteExistente = await db.query('SELECT * FROM customers WHERE cpf = $1', [cpf]);
+        const clienteAtual = await db.query('SELECT * FROM customers WHERE id = $1', [id]);
+
+        if(clienteExistente.rows.length > 0 && clienteExistente.rows[0].id !== Number(id)){
+            return res.status(409).send("Esse cliente já existe.");
+        }
+
+        if(clienteAtual.rows.length === 0){
+            return res.status(404).send("Cliente não encontrado.");
+        }
+
+        await db.query('UPDATE customers SET name = $1, phone = $2, cpf = $3, birthday = $4 WHERE id = $5', [name, phone, cpf, birthday, id]);
+        res.sendStatus(200);
+        
     } catch (error) {
         console.error("Erro no servidor:", error.message);
         return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
-    }
-}
+    };
+};
