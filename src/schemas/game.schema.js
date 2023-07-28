@@ -1,6 +1,6 @@
 import joi from "joi";
 
-const insertGame = joi.object({
+const gameSchema = joi.object({
     name: joi.string().required(),
     image: joi.string().required(),
     stockTotal: joi.number().positive().required(),
@@ -8,4 +8,4 @@ const insertGame = joi.object({
 });
 
 
-export default insertGame;
+export default gameSchema;
