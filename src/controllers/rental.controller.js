@@ -122,7 +122,6 @@ export async function deleteRental(req, res) {
     const { id } = req.params;
     try {
         const rental  = await db.query(`SELECT * FROM rentals WHERE id = $1`, [id]);
-        console.log(rental.rows);
 
         if(!rental.rows[0]) {
             return res.status(404).send("Aluguel inexistente.");
@@ -131,6 +130,7 @@ export async function deleteRental(req, res) {
         if(rental.rows[0].returnDate === null) {
             return res.status(400).send("Aluguel não finalizado.");
         }
+        
         await db.query(`DELETE FROM rentals WHERE id = $1`, [id]);
         res.sendStatus(200);
 

@@ -18,9 +18,8 @@ export async function getCustomerId(req, res) {
         if (!idExistente.rows[0]) {
             return res.status(404).send("O cliente não existe.");
         };
-        
-        console.log(idExistente.rows);
-        res.status(200).send(idExistente.rows);
+
+        res.status(200).send(idExistente.rows[0]);
 
     } catch (error) {
         console.error("Erro no servidor:", error.message);
