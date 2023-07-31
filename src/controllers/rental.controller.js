@@ -41,7 +41,7 @@ export async function getRentals(req, res) {
         res.status(200).send(formattedRentalsList);
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     }
 }
 
@@ -80,7 +80,7 @@ export async function postRentals(req, res) {
 
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     };
 };
 
@@ -114,7 +114,7 @@ export async function postRentalsReturn(req, res) {
 
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     }
 }
 
@@ -136,6 +136,6 @@ export async function deleteRental(req, res) {
 
     } catch(error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     }
 }

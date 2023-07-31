@@ -7,7 +7,7 @@ export async function getGames(req, res) {
         res.status(200).send(gamesList.rows);
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     };
 };
 
@@ -23,6 +23,6 @@ export async function postGame(req, res) {
         res.sendStatus(201);
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor:", error.message);
+        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
     };
 };
