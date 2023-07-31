@@ -7,7 +7,7 @@ export async function getCustomers(req, res) {
         res.status(200).send(customersList.rows);
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
+        return res.status(500).send("Erro no servidor:", error.message);
     };
 };
 
@@ -23,7 +23,7 @@ export async function getCustomerId(req, res) {
 
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
+        return res.status(500).send("Erro no servidor:", error.message);
     }
 }
 
@@ -40,7 +40,7 @@ export async function postCustomer(req, res) {
 
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
+        return res.status(500).send("Erro no servidor:", error.message);
     };
 };
 
@@ -64,6 +64,6 @@ export async function putCustomer(req, res) {
         
     } catch (error) {
         console.error("Erro no servidor:", error.message);
-        return res.status(500).send("Erro no servidor. Por favor, tente novamente mais tarde.");
+        return res.status(500).send("Erro no servidor:", error.message);
     };
 };
